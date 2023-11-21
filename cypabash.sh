@@ -67,9 +67,26 @@ fi
 
 echo 'Purging'
 
-sudo apt remove john hydra nginx samba bind9 vsftpd tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
+sudo apt remove john hydra nginx samba bind9 tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
 
-sudo apt purge john hydra nginx samba bind9 vsftpd tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
+sudo apt purge john hydra nginx samba bind9 tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
+
+#Removes vsftpd or in future configs it
+
+read -p "Delete = y or Config = n" ynvsftpd
+
+if [ "$ynvsftpd" = 'y' ]
+	then
+
+	sudo apt remove vsftpd
+	sudo apt remove vsftpd
+	echo 'vsftpd Removed!'
+
+else
+
+	echo 'vsftpd Remains'
+	
+fi
 
 sudo dpkg -L john hydra nginx samba bind9 vsftpd tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
 
