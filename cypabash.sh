@@ -1,7 +1,19 @@
+#!/bin/bash
+
+#Gives file perms
+
+chmod a+rwx ./cypabash.sh
+
 #Updates system
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
+
+#Creates backup of important files that will be edited
+
+mkdir backupconf
+cp /etc/sysctl.conf ./backupconf
+mv ./newconf/sysctl.conf /etc/sysctl.conf
 
 #Installs ClamTK if user allows
 read -p "Install ClamTk? y/n" ynclam
@@ -37,7 +49,7 @@ read -p "Disbale Root Accounts? y/n" ynroot
 if [ "$ynroot" = 'y' ]
 	then
 	
-	sudo passwd -I root
+	sudo passwd -L root
 	echo 'Disbale Root Account!'
 
 else
