@@ -1,5 +1,20 @@
 #!/bin/bash
 
+#Asks for Forensic Questions done
+
+read -p "//////Have you done the Forensic Questions. If not then their may be some points impossible to score\\\\\\" ynf
+
+if [ "$ynf" = 'y' ]
+	then
+
+	echo 'Done'
+
+else
+
+	exit 1
+	
+fi
+
 #Gives file perms
 
 chmod a+rwx ./cypabash.sh
@@ -13,7 +28,21 @@ sudo apt-get dist-upgrade
 
 mkdir backupconf
 cp /etc/sysctl.conf ./backupconf
-mv ./newconf/sysctl.conf /etc/sysctl.conf
+cp /etc/login.defs ./backupconf
+cp /etc/ssh/sshd_config ./backupconf
+
+#Replaces sysctl.conf file
+
+sudo mv ./newconf/sysctl.conf /etc/sysctl.conf
+sudo sysctl -p
+
+#Replaces logins.defs file
+
+sudo mv ./newconf/login.defs /etc/login.defs
+
+#Replaces sshd_config file
+
+sudo mv ./newconf/sshd_config /etc/ssh/sshd_config
 
 #Installs ClamTK if user allows
 read -p "Install ClamTk? y/n" ynclam
