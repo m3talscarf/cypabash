@@ -2,7 +2,7 @@
 
 #Asks for Forensic Questions done
 
-read -p "//////Have you done the Forensic Questions. If not then their may be some points impossible to score\\\\\\" ynf
+read -p "//////Have you done the Forensic Questions. If not then their may be some points impossible to score y/n\\\\\\" ynf
 
 if [ "$ynf" = 'y' ]
 	then
@@ -78,7 +78,7 @@ read -p "Disbale Root Accounts? y/n" ynroot
 if [ "$ynroot" = 'y' ]
 	then
 	
-	sudo passwd -L root
+	sudo passwd -l root
 	echo 'Disbale Root Account!'
 
 else
@@ -108,9 +108,9 @@ fi
 
 echo 'Purging'
 
-sudo apt remove john hydra nginx samba bind9 tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
+sudo aptitude remove john hydra nginx samba bind9 tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
 
-sudo apt purge john hydra nginx samba bind9 tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
+sudo apt-get purge john hydra nginx samba bind9 tftpd x11vnc tightvncserver snmp nfs-kernel-server sendmail postfix xinetd
 
 #Removes vsftpd or in future configs it
 
@@ -119,8 +119,8 @@ read -p "Delete = y or Config = n" ynvsftpd
 if [ "$ynvsftpd" = 'y' ]
 	then
 
-	sudo apt remove vsftpd
-	sudo apt remove vsftpd
+	sudo aptitude remove vsftpd
+	sudo apt-get purge vsftpd
 	echo 'vsftpd Removed!'
 
 else
