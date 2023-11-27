@@ -2,7 +2,7 @@
 
 #Asks for Forensic Questions done
 
-read -p "//////Have you done the Forensic Questions. If not then their may be some points impossible to score y/n\\\\\\" ynf
+read -p -r "//////Have you done the Forensic Questions. If not then their may be some points impossible to score y/n\\\\\\" ynf
 
 if [ "$ynf" = 'y' ]
 	then
@@ -45,7 +45,7 @@ sudo mv ./newconf/login.defs /etc/login.defs
 sudo mv ./newconf/sshd_config /etc/ssh/sshd_config
 
 #Installs ClamTK if user allows
-read -p "Install ClamTk? y/n" ynclam
+read -p -r "Install ClamTk? y/n" ynclam
 	
 	#if y then install
 if [ "$ynclam" = 'y' ]
@@ -73,7 +73,7 @@ sudo chmod 640 /etc/shadow
 
 #Disable root account
 
-read -p "Disbale Root Accounts? y/n" ynroot
+read -p -r "Disbale Root Accounts? y/n" ynroot
 
 if [ "$ynroot" = 'y' ]
 	then
@@ -89,7 +89,7 @@ fi
 
 #Remove Apache
 
-read -p "Delete Apache? y/n" ynapache
+read -p -r "Delete Apache? y/n" ynapache
 
 if [ "$ynapache" = 'y' ]
 	then
@@ -114,7 +114,7 @@ sudo apt-get purge john hydra nginx samba bind9 tftpd x11vnc tightvncserver snmp
 
 #Removes vsftpd or in future configs it
 
-read -p "Delete = y or Config = n" ynvsftpd
+read -p -r "Delete = y or Config = n" ynvsftpd
 
 if [ "$ynvsftpd" = 'y' ]
 	then
